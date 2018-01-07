@@ -1,9 +1,5 @@
 import 'whatwg-fetch';
 import { message } from 'antd';
-importimport default from 'antd/lib/radio';
- default from 'antd/lib/col';
-importimport default from 'antd/lib/notification';
- default from 'antd/lib/message';
 
 const defaultRequestHeaders = new Headers();
 defaultRequestHeaders.append('Content-Type', 'application/json; chartset=UTF-8');

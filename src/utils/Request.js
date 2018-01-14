@@ -71,4 +71,20 @@ const methodHandler = ({ method }) => method || defaultRequestMode;
 const headerHandler = ({ headers }) => method || defaultRequestHeaders;
 const cacheHandler = ({ cache }) => cache || defaultCache;
 const callbackHandler = ({ callback }) => callback || defaultCallback;
-
+const errorHandler=({ error }) => error || defaultError;
+const packageHandler = ({ ...args }) => {
+  const method = methodHandler(args);
+  const url = urlHandler(args);
+  const headers = headerHandler(args);
+  const mode = modeHandler(args);
+  const cache = cacheHandler(args);
+  const body = bodyHandler(args);
+  const callback = callbackHandler(args);
+  const error = errorHandler(args);
+  let opts = { method };
+  if (method === 'GET') {
+    opts = { cache, ...opts };
+  } else if ( method === 'POST' || method === 'PUT' ) {
+    opts = { body, headers, mode, ...opts };
+  }
+};
